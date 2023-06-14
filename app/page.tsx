@@ -5,7 +5,8 @@ import { fetchCars } from '@/utils';
 
 export default async function Home() {
   const allCars = await fetchCars();
-  console.log(allCars);
+  
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
 
   return (
     <main className="overflow-hidden">
@@ -23,6 +24,23 @@ export default async function Home() {
             <CustomFilter title="year"/>
           </div>
         </div>
+
+        {!isDataEmpty ? (
+          <section>
+            <div className="home__cars">
+              {allCars?.map((car) => (
+                <CarCard car ={car} />
+               ))}
+            </div>
+          </section>
+          //CarCard component renders if there is data returned
+        ) : (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+            <p>{allCars?.message}</p>
+          </div>
+          //Error container shows if data is empty on search
+        )}
 
       </div>
     </main>
