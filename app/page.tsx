@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Hero, CustomFilter, SearchBar } from '@/components';
+import { Hero, CustomFilter, SearchBar, CarCard } from '@/components';
 import { fetchCars } from '@/utils';
 
 export default async function Home() {
@@ -33,7 +33,7 @@ export default async function Home() {
                ))}
             </div>
           </section>
-          //CarCard component renders if there is data returned
+          //CarCard component  renders if there is data returned
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
