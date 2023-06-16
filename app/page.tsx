@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Hero, CustomFilter, SearchBar, CarCard } from '@/components';
+import { Hero, CustomFilter, SearchBar, CarCard, ShowMore } from '@/components';
 import { fetchCars } from '@/utils';
 import { fuels, yearsOfProduction } from '@/constants';
 
@@ -41,6 +41,11 @@ export default async function Home({ searchParams }) {
                 <CarCard car ={car} />
                ))}
             </div>
+            
+            <ShowMore 
+              pageNumber={(searchParams.pageNumber || 10) /10}
+              isNext={(searchParams.limit || 10 > allCars.length)}
+            />
           </section>
           //CarCard component renders if there is data returned. Maps over the cars for each car show the carCard component and pass the car data to it.
         ) : (
@@ -50,6 +55,10 @@ export default async function Home({ searchParams }) {
           </div>
           //Error container shows if data is empty on search
         )}
+
+        
+
+
 
       </div>
     </main>
