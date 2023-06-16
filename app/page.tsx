@@ -42,7 +42,7 @@ export default async function Home({ searchParams }) {
                ))}
             </div>
           </section>
-          //CarCard component  renders if there is data returned
+          //CarCard component renders if there is data returned. Maps over the cars for each car show the carCard component and pass the car data to it.
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>

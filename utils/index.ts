@@ -1,4 +1,5 @@
 import { CarProps, FilterProps } from "@/types";
+import { type } from "os";
 
 export async function fetchCars(filters: FilterProps) {
 
@@ -49,4 +50,15 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
     url.searchParams.append('angle', `${angle}`);
   
     return `${url}`;
+  }
+
+  export const updateSearchParams = (type: string, value: string) => {
+    const searchParams = new URLSearchParams(window.location.search);
+  
+    searchParams.set(type, value);
+    
+    // Generate the new pathname with the updated search parameters
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+    return newPathname;
   }
